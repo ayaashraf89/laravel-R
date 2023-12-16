@@ -53,7 +53,8 @@ class CarController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $cars = Car::findOrFail($id);
+        return view ('showCar', compact('cars'));
     }
 
     /**
@@ -70,7 +71,10 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->only($this->columns);
+        $data['published'] = isset($request->published);
+        Car::where('id', $id)->update($data);
+        return redirect('cars');
     }
 
     /**

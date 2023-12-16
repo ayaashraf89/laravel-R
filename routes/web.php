@@ -43,6 +43,10 @@ Route::get('cars', [CarController::class, 'index']);
 
 Route::get('updateCar/{id}', [CarController::class, 'edit']);
 
+Route::put('update/{id}', [CarController::class, 'update'])->name('update');
+
+Route::get('showCar/{id}', [CarController::class, 'show'])->name('showCar');
+
 // Created Posts
 
 Route::post('storePost', [PostController::class, 'store'])->name('storePost'); 
@@ -50,6 +54,10 @@ Route::post('storePost', [PostController::class, 'store'])->name('storePost');
 Route::get('posts', [PostController::class, 'index']);
 
 Route::get('createPost', [PostController::class, 'create']); 
+
+Route::get('updatePost/{id}', [PostController::class, 'edit']);
+
+Route::put('update/{id}', [PostController::class, 'update'])->name('update');
 
 
 

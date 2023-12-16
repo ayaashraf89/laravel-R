@@ -18,16 +18,27 @@
         <th>Post Title</th>
         <th>Description</th>
         <th>Published</th>
+        <th>Created_at</th>
+        <th>Edit</th>
+
       </tr>
     </thead>
     <tbody>
+    @foreach($posts as $post)
       <tr>
-        <td>John</td>
-        <td>desc</td>
+        <td>{{$post->posttitle}}</td>
+        <td>{{$post->description}}</td>
         <td>
-          post
+        @if($post->published)
+            Yes
+            @else
+            NO 
+            @endif
         </td>
+        <td>{{$post->created_at}}</td>
+        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
       </tr>
+      @endforeach
     </tbody>
   </table>
 </div>
