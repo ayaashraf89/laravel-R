@@ -6,10 +6,12 @@
     <title>Show Car</title>
 </head>
 <body>
+@foreach($cars as $car)
     <h1> {{$cars->title}}</h1>
     <h5> {{$cars->created_at}}</h5>
     <h5> {{$cars->updated_at}}</h5>
     <p> {{$cars->description}}</p>
     <p>{{ $car->published? "Published" : "Not Published" }}</p>
+    @endforeach
 </body>
 </html>

@@ -18,7 +18,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="cars">Home</a></li>
       <li><a href="createCar">Insert Car</a></li>
-      <li><a href="#">Rent</a></li>
+      <li><a href="trashedPost">Trash</a></li>
       <li><a href="#">Contact US</a></li>
     </ul>
   </div>

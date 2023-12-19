@@ -8,7 +8,7 @@ use App\Models\Post;
 class PostController extends Controller
 {
 
-    private $columns = ['posttitle', 'description', 'published'];
+    private $columns = ['posttitle', 'description', 'published', 'author'];
 
     /**
      * Display a listing of the resource.
@@ -83,6 +83,31 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Post::where('id', $id)->delete();
+        return redirect('posts');
+    }
+
+    /**
+     * trashed posts
+     */
+    public function trashedPost()
+    {
+        $posts = Post::onlyTrashed()->get();
+        return view ('trashedPost', compact('posts'));
+    }
+
+       /**
+     * Posts Trashed List.
+     */
+    public function forceDelete(string $id)
+    {
+        Post::where('id', $id)->forceDelete();
+        return redirect('posts');
+    }
+
+    public function restore(string $id)
+    {
+        Post::where('id', $id)->restore();
+        return redirect('posts');
     }
 }

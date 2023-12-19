@@ -12,7 +12,7 @@
 @include('includes.nav')
 <div class="container">
   <h2>Update Car Data</h2>
-  <form action="{{ route ('update', $cars->id)}}" method="post">
+  <form action="{{ route ('updateCar', $cars->id)}}" method="post">
     @csrf
     @method('put')
     <div class="form-group">

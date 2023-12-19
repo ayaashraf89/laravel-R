@@ -11,36 +11,29 @@
 <body>
 @include('includes.nav')
 <div class="container">
-  <h2>Posts list</h2>          
+  <h2>Trashed Cars list</h2>          
   <table class="table table-hover">
     <thead>
       <tr>
-        <th>Post Title</th>
+        <th>Title</th>
         <th>Description</th>
         <th>Published</th>
-        <th>Author</th>
-        <th>Created_at</th>
-        <th>Edit</th>
-        <th>Delete</th>
-
+        <th>ٍDelete</th>
       </tr>
     </thead>
     <tbody>
-    @foreach($posts as $post)
+        @foreach($cars as $car)
       <tr>
-        <td>{{ $post->posttitle }}</td>
-        <td>{{ $post->description }}</td>
+        <td>{{$car->title}}</td>
+        <td>{{$car->description}}</td>
         <td>
-        @if($post->published)
+            @if($car->published)
             Yes
             @else
             NO 
             @endif
         </td>
-        <td>{{ $post->author }}</td>
-        <td>{{ $post->created_at }}</td>
-        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
-        <td><a href="deletePost/{{ $post->id }}"onclick="return confirm('Are You Sure you want to delete?')">Delete</a></td>
+        <td><a href="deleteCar/{{ $car->id }}"onclick="return confirm('Are You Sure you want to delete?')">Delete</a></td>
       </tr>
       @endforeach
     </tbody>

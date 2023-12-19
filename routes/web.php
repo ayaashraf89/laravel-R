@@ -43,9 +43,13 @@ Route::get('cars', [CarController::class, 'index']);
 
 Route::get('updateCar/{id}', [CarController::class, 'edit']);
 
-Route::put('update/{id}', [CarController::class, 'update'])->name('update');
+Route::put('updCar/{id}', [CarController::class, 'update'])->name('updateCar');
 
 Route::get('showCar/{id}', [CarController::class, 'show'])->name('showCar');
+
+Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
+
+Route::get('trashed', [CarController::class, 'trashed'])->name('trashed');
 
 // Created Posts
 
@@ -59,6 +63,13 @@ Route::get('updatePost/{id}', [PostController::class, 'edit']);
 
 Route::put('update/{id}', [PostController::class, 'update'])->name('update');
 
+Route::get('deletePost/{id}',[PostController::class,'destroy']);
+
+Route::get('trashedPost', [PostController::class, 'trashedPost'])->name('trashedPost');
+
+Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
+
+Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
 
 
 

@@ -20,8 +20,8 @@
         <th>Published</th>
         <th>Author</th>
         <th>Created_at</th>
-        <th>Edit</th>
         <th>Delete</th>
+        <th>Restore</th>
 
       </tr>
     </thead>
@@ -39,8 +39,8 @@
         </td>
         <td>{{ $post->author }}</td>
         <td>{{ $post->created_at }}</td>
-        <td><a href="updatePost/{{ $post->id }}">Edit</a></td>
         <td><a href="deletePost/{{ $post->id }}"onclick="return confirm('Are You Sure you want to delete?')">Delete</a></td>
+        <td><a href="restorePost/{{ $post->id }}">Restore</a></td>
       </tr>
       @endforeach
     </tbody>
