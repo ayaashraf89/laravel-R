@@ -26,10 +26,20 @@ Route::get('login', function () {
    return view('login');
 }); 
 
+Route::get('image', function () {
+   return view('image');
+}); 
+
+Route::get('img', function () {
+   return view('img');
+}); 
+
 
 Route::post('logged', function () {
   return 'You Are Logged in'; 
 })->name('logged');
+
+Route::post('imageUpload', [ExampleController::class, 'upload'])->name('imageUpload');
 
 //Route::post('control', [ExampleController::class, 'store']); 
 
