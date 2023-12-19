@@ -44,7 +44,12 @@ class PostController extends Controller
         // $posts->save();
         // return 'data added successfully';
     
-        $data = $request->only($this->columns);
+        //$data = $request->only($this->columns);
+        $data = $request->validate([
+            'posttitle'=>'required|string|max:50',
+            'description'=>'required|string',
+            'author'=>'required|string|max:50',
+        ]);
         $data['published'] = isset($request->published);
         Post::create($data);
         return redirect('posts');
