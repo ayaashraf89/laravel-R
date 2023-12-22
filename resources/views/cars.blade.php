@@ -36,7 +36,7 @@
             @endif
         </td>
         <td><a href="updateCar/{{ $car->id }}">Edit</a></td>
-        <td><a href="ShowCar/{{ $car->id }}">Show</a></td>
+        <td><a href="showCar/{{ $car->id }}">Show</a></td>
         <td><a href="deleteCar/{{ $car->id }}"onclick="return confirm('Are You Sure you want to delete?')">Delete</a></td>
       </tr>
       @endforeach

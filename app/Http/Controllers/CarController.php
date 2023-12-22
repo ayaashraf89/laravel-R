@@ -83,6 +83,14 @@ class CarController extends Controller
     public function update(Request $request, string $id)
     {
         $data = $request->only($this->columns);
+        $image=$request->file('image');
+        if($image){
+            $fileName = $this->uploadFile($image,'assets/images');
+            $data['image']=$fileName;
+        }else{ 
+            $cars = Car::findOrFail($id);
+            $data['image']=$car->image;
+        }
         $data['published'] = isset($request->published);
         Car::where('id', $id)->update($data);
         return redirect('cars');
