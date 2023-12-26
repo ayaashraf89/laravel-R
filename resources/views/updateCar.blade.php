@@ -26,11 +26,12 @@
     <div class="form-group">
       <label for="image">Image:</label>
       <input type="file" class="form-control" id="image" name="image" value="{{$cars->image}}">
-      <img src="{{ asset('assets/images/1703013408.jpeg') }}" alt="car" style="width:200px;">
+      <img src="{{ asset('assets/images/' . $cars->image) }}" alt="car" style="width:200px;">
       @error('image')
         {{ $message }}
       @enderror
     </div>
+    <input type="hidden"  id="image" name="oldImage" value="{{$cars->image}}">
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($cars->published)> Published me</label>
     </div>

@@ -82,19 +82,21 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $data = $request->only($this->columns);
-        $image=$request->file('image');
-        if($image){
-            $fileName = $this->uploadFile($image,'assets/images');
-            $data['image']=$fileName;
-        }else{ 
-            $cars = Car::findOrFail($id);
-            $data['image']=$car->image;
+        //return dd($request);
+        $messages =$this->messages();
+        $data = $request->validate([
+            'title'=>'required|string|max:50',
+            'description'=>'required|string',
+            'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
+        ], $messages);
+        if($request->hasFile('image')){
+        $fileName = $this->uploadFile($request->image, 'assets/images');    
+        $data['image'] = $fileName;
         }
         $data['published'] = isset($request->published);
-        Car::where('id', $id)->update($data);
+        Car::where ('id', $id)->update($data);
         return redirect('cars');
-    }
+       }
 
     /**
      * Remove the specified resource from storage.

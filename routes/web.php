@@ -34,6 +34,10 @@ Route::get('img', function () {
    return view('img');
 }); 
 
+Route::get('testHome', function () {
+   return view('testHome');
+}); 
+
 
 Route::post('logged', function () {
   return 'You Are Logged in'; 
