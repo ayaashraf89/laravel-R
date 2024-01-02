@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Car;
+use App\Models\Category;
 use App\Traits\Common;
 
 class CarController extends Controller
@@ -25,9 +26,12 @@ class CarController extends Controller
      * Show the form for creating a new resource.
      */
     public function create()
+
     {
-        return view('addCar');
+        $categories = Category::get();
+        return view ('addCar', compact('categories'));
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -51,6 +55,7 @@ class CarController extends Controller
             'title'=>'required|string|max:50',
             'description'=>'required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+            'category_id'=>'required',
         ], $messages);
         $fileName = $this->uploadFile($request->image, 'assets/images');    
         $data['image'] = $fileName;
@@ -74,7 +79,8 @@ class CarController extends Controller
     public function edit(string $id)
     {
         $cars = Car::findOrFail($id);
-        return view ('updateCar', compact('cars'));
+        $categories = Category::all(); 
+        return view ('updateCar', compact('cars', 'categories'));
     }
 
     /**
@@ -88,6 +94,7 @@ class CarController extends Controller
             'title'=>'required|string|max:50',
             'description'=>'required|string',
             'image' => 'sometimes|mimes:png,jpg,jpeg|max:2048',
+            'category_id'=>'required',
         ], $messages);
         if($request->hasFile('image')){
         $fileName = $this->uploadFile($request->image, 'assets/images');    

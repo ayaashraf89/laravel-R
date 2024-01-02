@@ -12,6 +12,7 @@
     <h5> {{$cars->updated_at}}</h5>
     <p> {{$cars->description}}</p>
     <p> {{$cars->image}}</p>
+    <p> {{$cars->category->cat_name}}</p>
     <p>{{ $cars->published? "Published" : "Not Published" }}</p>
 
 </body>

@@ -17,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'cat_name' => fake()->numberBetween(1, 10),
+            'cat_name' => fake()->company(),
         ];
     }
 }
