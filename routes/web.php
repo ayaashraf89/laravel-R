@@ -49,7 +49,7 @@ Route::post('imageUpload', [ExampleController::class, 'upload'])->name('imageUpl
 
 // Created Cars
 
-Route::get('createCar', [CarController::class, 'create']); 
+Route::get('createCar', [CarController::class, 'create'])->middleware('verified')->name('createCar'); 
 
 Route::post('storeCar', [CarController::class, 'store'])->name('storeCar'); 
 
@@ -65,25 +65,27 @@ Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
 
 Route::get('trashed', [CarController::class, 'trashed'])->name('trashed');
 
+Auth::routes(['verify'=>true]);
+
 // Created Posts
 
-Route::post('storePost', [PostController::class, 'store'])->name('storePost'); 
+// Route::post('storePost', [PostController::class, 'store'])->name('storePost'); 
 
-Route::get('posts', [PostController::class, 'index']);
+// Route::get('posts', [PostController::class, 'index']);
 
-Route::get('createPost', [PostController::class, 'create']); 
+// Route::get('createPost', [PostController::class, 'create']); 
 
-Route::get('updatePost/{id}', [PostController::class, 'edit']);
+// Route::get('updatePost/{id}', [PostController::class, 'edit']);
 
-Route::put('update/{id}', [PostController::class, 'update'])->name('update');
+// Route::put('update/{id}', [PostController::class, 'update'])->name('update');
 
-Route::get('deletePost/{id}',[PostController::class,'destroy']);
+// Route::get('deletePost/{id}',[PostController::class,'destroy']);
 
-Route::get('trashedPost', [PostController::class, 'trashedPost'])->name('trashedPost');
+// Route::get('trashedPost', [PostController::class, 'trashedPost'])->name('trashedPost');
 
-Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
+// Route::get('restorePost/{id}',[PostController::class,'restore'])->name('restorePost');
 
-Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
+// Route::get('forceDelete/{id}',[PostController::class,'forceDelete'])->name('forceDelete');
 
 
 
@@ -131,3 +133,6 @@ Route::get('contact/{name?}', function ($name= null) {
 Route::get('blog/{category}', function ($category) {
    return 'The category  is ' .$category;
     })->whereIn('category', ['Science', 'sports', 'math']);
+//Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
